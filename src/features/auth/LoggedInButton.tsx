@@ -13,7 +13,6 @@ export const LoggedInButton = async () => {
     if(!session?.user) {
         return <SignInButton/>
     }
-    console.log(session.user.name)
 
     return (
         <LoggedInDropdown>

@@ -1,14 +1,17 @@
-
+"use client"
 import { PropsWithChildren } from "react";
-import { DropdownMenu, 
+import {
+    DropdownMenu,
     DropdownMenuTrigger,
     DropdownMenuItem,
-    DropdownMenuContent } from "@/components/ui/dropdown-menu"
-import { signOut } from "@/auth/auth";
+    DropdownMenuContent
+} from "@/components/ui/dropdown-menu"
+import { signOutAction } from "./auth.actions";
+import { LogOut } from "lucide-react"
 
 export type LoggedInDropdownProps = PropsWithChildren
 
-export const LoggedInDropdown = (props: LoggedInDropdownProps ) => {
+export const LoggedInDropdown = (props: LoggedInDropdownProps) => {
 
     return (
         <DropdownMenu>
@@ -16,17 +19,14 @@ export const LoggedInDropdown = (props: LoggedInDropdownProps ) => {
                 {props.children}
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-                <form>
-                    <DropdownMenuItem asChild>
-                        <button
-                            formAction={async () => {
-                                "use server";
-                                await signOut();
-                            } } >
-                                Logout
-                        </button>
-                    </DropdownMenuItem>
-                </form>
+                <DropdownMenuItem
+                    onClick={async () => {
+                        await signOutAction();
+                    }}
+                >
+                    <LogOut size={16} className="mr-2" />
+                    Logout
+                </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
     )
