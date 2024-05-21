@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 export const SignInButton =  () => {
     return (
         <form>
-            <Button
+            <Button variant="secondary" size="sm"
                 formAction={async () => {
                     "use server";
                     await signIn();
